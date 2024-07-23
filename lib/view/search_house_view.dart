@@ -6,19 +6,18 @@ class SearchHouseView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('İlan Ara'),
-      ),
-      body: Column(
-        children: const [
-          Center(
-            child: Text(
-              'Search House',
-              style: TextStyle(fontSize: 24),
-            ),
-          ),
-        ],
-      )
-    );
+        appBar: AppBar(
+          title: const Text('İlan Ara'),
+        ),
+        body: Column(
+          children: [
+            Row(
+              children: [
+                Image.network(
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF_LDMJcYwdd9_O73matfRxuDQ9j_dWCvlnQ&s")
+              ],
+            )
+          ],
+        ));
   }
 }
