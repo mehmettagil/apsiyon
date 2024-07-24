@@ -2,18 +2,18 @@
 
 part of 'ad_bloc.dart';
 
-abstract class HouseAdEvent extends Equatable {
-  const HouseAdEvent();
+abstract class AdEvent extends Equatable {
+  const AdEvent();
   @override
   List<Object> get props => [];
 }
 
-class HouseAdInitialEvent extends HouseAdEvent {
-  const HouseAdInitialEvent();
+class AdInitialEvent extends AdEvent {
+  const AdInitialEvent();
 }
 
-class HouseAdUpdateTooltipValueEvent extends HouseAdEvent {
-  const HouseAdUpdateTooltipValueEvent(this.tooltipValue);
+class AdUpdateTooltipValueEvent extends AdEvent {
+  const AdUpdateTooltipValueEvent(this.tooltipValue);
   final String tooltipValue;
   @override
   List<Object> get props => [tooltipValue];

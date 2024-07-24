@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:apsiyon/app_bloc/ad_bloc/ad_bloc.dart';
 import 'package:apsiyon/basic_structure/repository/ad_repository/ad_repository.dart';
 import 'package:apsiyon/basic_structure/repository/ad_repository/i_ad_repository.dart';
+import 'package:apsiyon/basic_structure/storage/ad_storage.dart';
+import 'package:apsiyon/basic_structure/storage/i_ad_storage.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,6 +22,8 @@ Future<bool> injected() async {
   final isBlocDone = await _injectBlocs();
   if (!isBlocDone) return false;
 
+  final isStorageDone = await _injectStorage();
+
   return true;
 }
 
@@ -32,16 +36,20 @@ Future<bool> _injectPackages() async {
 }
 
 Future<bool> _injectBlocs() async {
-  getIt.registerFactory<HouseAdBloc>(() => HouseAdBloc(
-    getIt<IAdRepository>(),
-  ));
+  getIt.registerFactory<AdBloc>(() => AdBloc(
+        getIt<IAdRepository>(),
+        getIt<IAdStorage>(),
+      ));
 
   return true;
 }
 
 Future<bool> _injectFacades() async {
+  getIt.registerSingleton<IAdRepository>(AdRepository());
+  return true;
+}
 
-   getIt.registerSingleton<IAdRepository>(AdRepository(
-  ));
+Future<bool> _injectStorage() async {
+  getIt.registerSingleton<IAdStorage>(AdStorage());
   return true;
 }

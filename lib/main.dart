@@ -18,8 +18,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<HouseAdBloc>(
-          create: (_) => getIt<HouseAdBloc>()..addHouseAdInitialEvent(),
+        BlocProvider<AdBloc>(
+          create: (_) => getIt<AdBloc>()..addAdInitialEvent(),
         ),
       ],
       child: MaterialApp(
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const HouseAdView(),
+        home: const AdView(),
       ),
     );
   }

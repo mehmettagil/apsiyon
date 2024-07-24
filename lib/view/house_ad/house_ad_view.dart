@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:like_button/like_button.dart';
 
-class HouseAdView extends StatelessWidget {
-  const HouseAdView({super.key});
+class AdView extends StatelessWidget {
+  const AdView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class HouseAdView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('İlanlar'),
       ),
-      body: BlocBuilder<HouseAdBloc, HouseAdState>(
+      body: BlocBuilder<AdBloc, AdState>(
         buildWhen: (previous, current) {
           return previous.adList != current.adList;
         },
@@ -29,7 +29,9 @@ class HouseAdView extends StatelessWidget {
           return SingleChildScrollView(
             child: Column(
               children: [
-                for (var index = 0; index < state.adListOrCrash!.size; index++) ...{
+                for (var index = 0;
+                    index < state.adListOrCrash!.size;
+                    index++) ...{
                   Card(
                     margin: const EdgeInsets.only(bottom: 10),
                     child: Row(

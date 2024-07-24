@@ -1,14 +1,14 @@
 part of 'ad_bloc.dart';
 
-class HouseAdState extends Equatable {
-  const HouseAdState({
+class AdState extends Equatable {
+  const AdState({
     required this.valueWidth,
     required this.tooltipValue,
     required this.adList,
   });
 
-  factory HouseAdState.initial() {
-    return HouseAdState(
+  factory AdState.initial() {
+    return AdState(
       valueWidth: 0,
       tooltipValue: "",
       adList: none(),
@@ -19,12 +19,12 @@ class HouseAdState extends Equatable {
   final String tooltipValue;
   final Option<Either<AdRepositoryFailure, KtList<AdModel>>> adList;
 
-  HouseAdState copyWith({
+  AdState copyWith({
     int? valueWidth,
     String? tooltipValue,
     Option<Either<AdRepositoryFailure, KtList<AdModel>>>? adList,
   }) {
-    return HouseAdState(
+    return AdState(
       valueWidth: valueWidth ?? this.valueWidth,
       tooltipValue: tooltipValue ?? this.tooltipValue,
       adList: adList ?? this.adList,
