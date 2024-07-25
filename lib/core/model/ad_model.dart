@@ -48,7 +48,7 @@ class AdModel extends Equatable {
     };
   }
 
-  factory AdModel.fromMap(Map<String, dynamic> map) {
+  factory AdModel.fromMap(Map<dynamic, dynamic> map) {
     return AdModel(
       adNo: map['adNo'] as String,
       siteName: map['siteName'] as String,

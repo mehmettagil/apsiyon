@@ -1,5 +1,3 @@
-
-
 part of 'ad_bloc.dart';
 
 abstract class AdEvent extends Equatable {
@@ -17,4 +15,11 @@ class AdUpdateTooltipValueEvent extends AdEvent {
   final String tooltipValue;
   @override
   List<Object> get props => [tooltipValue];
+}
+
+class AdCahngeLikeStatusEvent extends AdEvent {
+  const AdCahngeLikeStatusEvent(this.adModel);
+  final AdModel adModel;
+  @override
+  List<Object> get props => [adModel];
 }
