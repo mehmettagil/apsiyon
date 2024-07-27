@@ -1,9 +1,11 @@
 import 'package:apsiyon/app_bloc/ad_bloc/ad_bloc.dart';
 import 'package:apsiyon/app_bloc/ad_list_bloc/ad_list_bloc.dart';
+import 'package:apsiyon/app_bloc/advert_bloc/advert_bloc.dart';
+import 'package:apsiyon/app_bloc/login/login_bloc.dart';
 import 'package:apsiyon/injection.dart';
-import 'package:apsiyon/view/ad_list/ad_list.dart';
 import 'package:apsiyon/view/filter/filter_view.dart';
 import 'package:apsiyon/view/house_ad/house_ad_view.dart';
+import 'package:apsiyon/view/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,7 +18,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -27,6 +28,8 @@ class MyApp extends StatelessWidget {
         BlocProvider<AdListBloc>(
           create: (_) => getIt<AdListBloc>()..adListdAdListInitialEvent(),
         ),
+        BlocProvider<LoginBloc>(create: (_) => getIt<LoginBloc>()),
+        BlocProvider<AdVertBloc>(create: (_) => getIt<AdVertBloc>()),
       ],
       child: MaterialApp(
           title: 'Apsiyon',
@@ -34,7 +37,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const FilterView()),
+          home: const LoginScreen()),
     );
   }
 }

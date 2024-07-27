@@ -7,7 +7,6 @@ import 'package:apsiyon/view/filter/widget/ad_filter_number_room_widget.dart';
 import 'package:apsiyon/view/filter/widget/ad_filter_price_widget.dart';
 import 'package:apsiyon/view/filter/widget/search_near_nw_widget.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,8 +27,6 @@ class AdFilterSelection extends StatelessWidget {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () {
-        log("Tıklandı"); // Konsola tıklama mesajı yazar
-        // Dialogu göstermek için showDialog'u çağırıyoruz
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -71,7 +68,27 @@ class AdFilterSelection extends StatelessWidget {
                       case AdFilterType.searchNearMe:
                         newSubtitle = state.distance == 0
                             ? "Tümü"
-                            : state.distance.toString();
+                            : "${state.distance.toStringAsFixed(1)} km";
+                      case AdFilterType.price:
+                        newSubtitle = state.maxPrice == 0
+                            ? "Tümü"
+                            : ("${state.minPrice}-${state.maxPrice}");
+                      case AdFilterType.m2:
+                        newSubtitle = state.maxM2 == 0
+                            ? "Tümü"
+                            : ("${state.minM2}-${state.maxM2}");
+                      case AdFilterType.numberRooms:
+                        newSubtitle = state.selectedRoomTypes.isEmpty
+                            ? "Tümü"
+                            : state.selectedRoomTypes.join(", ");
+                      case AdFilterType.buildingAge:
+                        newSubtitle = state.selectedBuildingAges.isEmpty
+                            ? "Tümü"
+                            : state.selectedBuildingAges.join(", ");
+                      case AdFilterType.floor:
+                        newSubtitle = state.selectedFloorCounts.isEmpty
+                            ? "Tümü"
+                            : state.selectedFloorCounts.join(", ");
 
                         break;
                       default:

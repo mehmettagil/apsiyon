@@ -26,7 +26,6 @@ class AdBloc extends Bloc<AdEvent, AdState> {
     on<AdUpdateBuildingAgeFilterEvent>(_onAdUpdateBuildingAgeFilterEvent);
     on<AdUpdateFloorFilterEvent>(_onAdUpdateFloorFilterEvent);
     on<AdUpdateM2FilterEvent>(_onAdUpdateM2FilterEvent);
-    on<AdUpdateFiltersEvent>(_onAdUpdateFiltersEvent);
   }
 
   final IAdRepository _iAdRepository;
@@ -71,7 +70,7 @@ class AdBloc extends Bloc<AdEvent, AdState> {
 
   Future<void> _onAdInitialEvent(
       AdInitialEvent event, Emitter<AdState> emit) async {
-    final adList = await _iAdStorage.getAd();
+    final adList =  _iAdStorage.getAd();
     if (adList.isEmpty) {
       final adResult = await _iAdRepository.getAd();
       adResult.fold(
@@ -132,14 +131,6 @@ class AdBloc extends Bloc<AdEvent, AdState> {
     final updatedState = state.copyWith(
       minM2: event.minM2,
       maxM2: event.maxM2,
-    );
-    emit(updatedState);
-  }
-
-  Future<void> _onAdUpdateFiltersEvent(
-      AdUpdateFiltersEvent event, Emitter<AdState> emit) async {
-    final updatedState = state.copyWith(
-      selectedFilters: event.selectedFilters,
     );
     emit(updatedState);
   }

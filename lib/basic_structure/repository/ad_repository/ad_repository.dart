@@ -12,85 +12,75 @@ class AdRepository implements IAdRepository {
     try {
       List<AdModel> dummyAds = [
         const AdModel(
-            adNo: '1001',
-            siteName: 'Esenevler Sitesi',
-            description: 'Hastaneye Yakın, Bahçeli',
-            price: '14000 TL',
-            imageUrl:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF_LDMJcYwdd9_O73matfRxuDQ9j_dWCvlnQ&s',
-            isLiked: false),
+          adNo: '1001',
+          siteName: 'Esenevler Sitesi',
+          description: 'Hastaneye yakın, bahçeli daire',
+          price: 14000,
+          imageUrl:
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF_LDMJcYwdd9_O73matfRxuDQ9j_dWCvlnQ&s',
+          isLiked: false,
+          distance: 5.0,
+          m2: 120.0,
+          roomCount: '3+1',
+          buildingAge: '5',
+          floorCount: '2',
+        ),
         const AdModel(
-            adNo: '1002',
-            siteName: 'Göl Konakları',
-            description: 'Göl manzaralı, lüks daire',
-            price: '25000 TL',
-            imageUrl:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF_LDMJcYwdd9_O73matfRxuDQ9j_dWCvlnQ&s',
-            isLiked: false),
+          adNo: '1002',
+          siteName: 'Göl Konakları',
+          description: 'Göl manzaralı, lüks daire',
+          price: 25000,
+          imageUrl:
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF_LDMJcYwdd9_O73matfRxuDQ9j_dWCvlnQ&s',
+          isLiked: false,
+          distance: 3.0,
+          m2: 150.0,
+          roomCount: '4+1',
+          buildingAge: '2',
+          floorCount: '5',
+        ),
         const AdModel(
-            adNo: '1003',
-            siteName: 'Yıldız Apartmanı',
-            description: 'Merkezi konum, yeni bina',
-            price: '17000 TL',
-            imageUrl:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF_LDMJcYwdd9_O73matfRxuDQ9j_dWCvlnQ&s',
-            isLiked: false),
+          adNo: '1003',
+          siteName: 'Yıldız Apartmanı',
+          description: 'Merkezi konum, yeni bina',
+          price: 17000,
+          imageUrl:
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF_LDMJcYwdd9_O73matfRxuDQ9j_dWCvlnQ&s',
+          isLiked: false,
+          distance: 1.0,
+          m2: 110.0,
+          roomCount: '2+1',
+          buildingAge: '1',
+          floorCount: '3',
+        ),
         const AdModel(
-            adNo: '1004',
-            siteName: 'Koru Evleri',
-            description: 'Doğa ile iç içe, geniş bahçe',
-            price: '20000 TL',
-            imageUrl:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF_LDMJcYwdd9_O73matfRxuDQ9j_dWCvlnQ&s',
-            isLiked: false),
+          adNo: '1004',
+          siteName: 'Koru Evleri',
+          description: 'Doğa ile iç içe, geniş bahçe',
+          price: 20000,
+          imageUrl:
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF_LDMJcYwdd9_O73matfRxuDQ9j_dWCvlnQ&s',
+          isLiked: false,
+          distance: 8.0,
+          m2: 180.0,
+          roomCount: '5+1',
+          buildingAge: '7',
+          floorCount: '1',
+        ),
         const AdModel(
-            adNo: '1005',
-            siteName: 'Altınpark Sitesi',
-            description: 'Güvenlikli site, sosyal tesisler',
-            price: '22000 TL',
-            imageUrl:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF_LDMJcYwdd9_O73matfRxuDQ9j_dWCvlnQ&s',
-            isLiked: false),
-        const AdModel(
-            adNo: '1006',
-            siteName: 'Şehir Merkez Apart',
-            description: 'Ulaşım kolaylığı, metroya yakın',
-            price: '16000 TL',
-            imageUrl:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF_LDMJcYwdd9_O73matfRxuDQ9j_dWCvlnQ&s',
-            isLiked: false),
-        const AdModel(
-            adNo: '1007',
-            siteName: 'Çiçek Apartmanı',
-            description: 'Yeşil alanlar, park yeri',
-            price: '13000 TL',
-            imageUrl:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF_LDMJcYwdd9_O73matfRxuDQ9j_dWCvlnQ&s',
-            isLiked: false),
-        const AdModel(
-            adNo: '1008',
-            siteName: 'Modern Rezidans',
-            description: 'Fitness salonu, kapalı otopark',
-            price: '28000 TL',
-            imageUrl:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF_LDMJcYwdd9_O73matfRxuDQ9j_dWCvlnQ&s',
-            isLiked: false),
-        const AdModel(
-            adNo: '1009',
-            siteName: 'Deniz Yıldızı Evleri',
-            description: 'Deniz manzaralı, geniş balkon',
-            price: '30000 TL',
-            imageUrl:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF_LDMJcYwdd9_O73matfRxuDQ9j_dWCvlnQ&s',
-            isLiked: false),
-        const AdModel(
-            adNo: '1010',
-            siteName: 'Bağcılar Sitesi',
-            description: 'Aile yaşamına uygun, geniş daire',
-            price: '15000 TL',
-            imageUrl:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF_LDMJcYwdd9_O73matfRxuDQ9j_dWCvlnQ&s',
-            isLiked: false),
+          adNo: '1005',
+          siteName: 'Altınpark Sitesi',
+          description: 'Güvenlikli site, sosyal tesisler',
+          price: 22000,
+          imageUrl:
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF_LDMJcYwdd9_O73matfRxuDQ9j_dWCvlnQ&s',
+          isLiked: false,
+          distance: 4.0,
+          m2: 135.0,
+          roomCount: '3+1',
+          buildingAge: '10',
+          floorCount: '4',
+        ),
       ];
 
       return right(KtList.from([...dummyAds]));

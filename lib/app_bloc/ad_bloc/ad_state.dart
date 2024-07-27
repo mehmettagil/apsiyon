@@ -19,17 +19,17 @@ class AdState extends Equatable {
   factory AdState.initial() {
     return AdState(
       valueWidth: 0,
-      distance: 0,
+      distance: 100,
       tooltipValue: "",
       adList: none(),
-      minPrice: null,
-      maxPrice: null,
+      minPrice: 0,
+      maxPrice: 100000,
       selectedRoomTypes: const [],
       selectedBuildingAges: const [],
       selectedFloorCounts: const [],
-      minM2: null,
-      maxM2: null,
-      selectedFilters: const {}, // Başlangıçta filtreler boş
+      minM2: 0,
+      maxM2: 300,
+      selectedFilters: none(),
     );
   }
 
@@ -44,7 +44,7 @@ class AdState extends Equatable {
   final List<String> selectedFloorCounts;
   final int? minM2;
   final int? maxM2;
-  final Map<AdFilterType, List<String>> selectedFilters;
+  final Option<Either<AdRepositoryFailure, KtList<AdModel>>> selectedFilters;
 
   AdState copyWith({
     int? valueWidth,
@@ -58,7 +58,7 @@ class AdState extends Equatable {
     List<String>? selectedFloorCounts,
     int? minM2,
     int? maxM2,
-    Map<AdFilterType, List<String>>? selectedFilters,
+    Option<Either<AdRepositoryFailure, KtList<AdModel>>>? selectedFilters,
   }) {
     return AdState(
       valueWidth: valueWidth ?? this.valueWidth,
@@ -75,6 +75,34 @@ class AdState extends Equatable {
       selectedFilters: selectedFilters ?? this.selectedFilters,
     );
   }
+
+  KtList<AdModel>? get filterListOrCrash => adList.fold(() {
+        return null;
+      }, (model) {
+        return model.fold((failure) {
+          return null;
+        }, (adList) {
+          // Filtreleme işlemi
+          KtList<AdModel> filterList = adList.filter((ad) {
+            return ad.price >= minPrice! &&
+                ad.price <= maxPrice! &&
+                ad.distance <= distance &&
+                ad.m2 >= minM2! &&
+                ad.m2 <= maxM2! &&
+                (selectedRoomTypes.isEmpty
+                    ? true
+                    : selectedRoomTypes.contains(ad.roomCount)) &&
+                (selectedBuildingAges.isEmpty
+                    ? true
+                    : selectedBuildingAges.contains(ad.buildingAge)) &&
+                (selectedFloorCounts.isEmpty
+                    ? true
+                    : selectedFloorCounts.contains(ad.floorCount));
+          });
+
+          return filterList;
+        });
+      });
 
   KtList<AdModel>? get adListOrCrash => adList.fold(() {
         return null;

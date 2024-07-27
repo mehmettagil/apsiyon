@@ -24,7 +24,8 @@ class AdView extends StatelessWidget {
         },
         builder: (context, state) {
           // Eğer liste null veya boşsa, yüklenme göstergesi gösterilir
-          if (state.adListOrCrash == null || state.adListOrCrash!.isEmpty()) {
+          if (state.filterListOrCrash == null ||
+              state.filterListOrCrash!.isEmpty()) {
             return const Center(
               child: CircularProgressIndicator(),
             );
@@ -39,7 +40,7 @@ class AdView extends StatelessWidget {
                     height: 30,
                   ),
                   for (var index = 0;
-                      index < state.adListOrCrash!.size;
+                      index < state.filterListOrCrash!.size;
                       index++) ...{
                     Card(
                       margin: const EdgeInsets.only(bottom: 10),
@@ -49,7 +50,7 @@ class AdView extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => AdDetail(
-                                adModel: state.adListOrCrash![index],
+                                adModel: state.filterListOrCrash![index],
                               ),
                             ),
                           );
@@ -61,7 +62,7 @@ class AdView extends StatelessWidget {
                               width: context.width * 0.45,
                               height: context.height * 0.15,
                               child: Image.network(
-                                state.adListOrCrash![index].imageUrl,
+                                state.filterListOrCrash![index].imageUrl,
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -78,7 +79,7 @@ class AdView extends StatelessWidget {
                                       Row(
                                         children: [
                                           Text(
-                                            "İlan No: ${state.adListOrCrash![index].adNo}",
+                                            "İlan No: ${state.filterListOrCrash![index].adNo}",
                                             style: const TextStyle(
                                                 fontWeight: FontWeight.bold),
                                           ),
@@ -88,7 +89,8 @@ class AdView extends StatelessWidget {
                                                 horizontal: 5.0, vertical: 5.0),
                                             size: 24,
                                             isLiked: state
-                                                .adListOrCrash![index].isLiked,
+                                                .filterListOrCrash![index]
+                                                .isLiked,
                                             bubblesSize: 0,
                                             likeCountPadding:
                                                 const EdgeInsets.only(left: 6),
@@ -97,9 +99,10 @@ class AdView extends StatelessWidget {
                                                   .read<AdBloc>()
                                                   .addAdChangeLikeStatusEvent(
                                                     adModel: context
-                                                        .read<AdBloc>()
-                                                        .state
-                                                        .adListOrCrash![index],
+                                                            .read<AdBloc>()
+                                                            .state
+                                                            .filterListOrCrash![
+                                                        index],
                                                   );
                                               return !isLiked;
                                             },
@@ -120,7 +123,8 @@ class AdView extends StatelessWidget {
                                       ),
                                       const SizedBox(height: 5),
                                       Text(
-                                        state.adListOrCrash![index].siteName,
+                                        state
+                                            .filterListOrCrash![index].siteName,
                                         style: const TextStyle(
                                           color: Colors.blueAccent,
                                           fontWeight: FontWeight.bold,
@@ -128,7 +132,8 @@ class AdView extends StatelessWidget {
                                       ),
                                       const SizedBox(height: 5),
                                       Text(
-                                        state.adListOrCrash![index].description,
+                                        state.filterListOrCrash![index]
+                                            .description,
                                         style: const TextStyle(
                                           fontSize: 16,
                                           color: Colors.black,
@@ -139,7 +144,7 @@ class AdView extends StatelessWidget {
                                         children: [
                                           const Spacer(),
                                           Text(
-                                            state.adListOrCrash![index].price,
+                                            "${state.filterListOrCrash![index].price} km",
                                             style: const TextStyle(
                                               fontSize: 18,
                                               color: Colors.black,

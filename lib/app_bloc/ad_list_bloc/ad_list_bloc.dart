@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:apsiyon/basic_structure/repository/ad_list_repository/i_ad_list_repository.dart';
 import 'package:apsiyon/basic_structure/repository/failure/game_repository_failure.dart';
+import 'package:apsiyon/basic_structure/storage/advert_storage/i_advert_storage.dart';
 
 import 'package:apsiyon/core/model/ad_list_model.dart';
 import 'package:dartz/dartz.dart';

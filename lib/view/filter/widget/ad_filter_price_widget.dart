@@ -45,7 +45,8 @@ class AdFilterPriceWidget extends StatelessWidget {
             final minPrice = minPriceController.text;
             final maxPrice = maxPriceController.text;
             context.read<AdBloc>().add(AdUpdatePriceFilterEvent(
-                minPrice: int.parse(minPrice), maxPrice: int.parse(maxPrice)));
+                minPrice: int.parse(minPrice == "" ? "0" : minPrice),
+                maxPrice: int.parse(maxPrice == "" ? "0" : maxPrice)));
             Navigator.of(context).pop();
           },
           child: const Text('Tamam'),
