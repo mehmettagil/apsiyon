@@ -1,6 +1,7 @@
 import 'package:apsiyon/app_bloc/ad_bloc/ad_bloc.dart';
 import 'package:apsiyon/core/enum/ad_filter_type.dart';
 import 'package:apsiyon/core/init/extension/context_extensions.dart';
+import 'package:apsiyon/view/ad_list/ad_list.dart';
 import 'package:apsiyon/view/advert_screen.dart';
 import 'package:apsiyon/view/filter/widget/ad_filter_Selection.dart';
 import 'package:apsiyon/view/house_ad/house_ad_view.dart';
@@ -14,6 +15,7 @@ class FilterView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Filtreleme'),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -26,16 +28,23 @@ class FilterView extends StatelessWidget {
             icon: Icon(Icons.create),
             label: 'İlan Oluştur',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            label: 'Gelen Başvurular',
+          ),
         ],
         onTap: (index) {
           if (index == 0) {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               return const FilterView();
             }));
+          } else if (index == 2) {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return const AdList();
+            }));
           } else {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return const AdvertScreen(
-              );
+              return const AdvertScreen();
             }));
           }
         },

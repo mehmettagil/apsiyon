@@ -9,8 +9,7 @@ class AdvertStorage implements IAdvertStorage {
 
   @override
   Future<void> saveAdvert(Advert advert) async {
-    List<Advert> advertList =
-        List<Advert>.from(store.get(boxName, defaultValue: []));
+    final advertList = await fetchAdverts();
 
     // Yeni ilanı ekle
     advertList.add(advert);

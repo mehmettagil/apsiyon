@@ -57,7 +57,7 @@ class Advert {
     };
   }
 
-  factory Advert.fromMap(Map<String, dynamic> map) {
+  factory Advert.fromMap(Map<dynamic, dynamic> map) {
     return Advert(
       id: map['id'] as String,
       siteAdi: map['siteAdi'] as String,

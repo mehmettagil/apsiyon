@@ -168,10 +168,7 @@ BlocListener<LoginBloc, LoginState> _getLoginCheckListener() {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => BlocProvider.value(
-                    value: context.read<LoginBloc>(),
-                    child: const FilterView(),
-                  ),
+                  builder: (_) => const FilterView(),
                 ));
           });
         }

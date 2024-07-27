@@ -72,7 +72,7 @@ class _UserAdListViewState extends State<UserAdListView> {
                                       width: context.width * 0.45,
                                       height: context.height * 0.15,
                                       child: Image.network(
-                                        "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+                                        "https://www.alemdarbinayonetimi.com.tr/wp-content/uploads/2022/04/site-yonetimi-1200x565-1.jpg",
                                         fit: BoxFit.fill,
                                       ),
                                     ),
