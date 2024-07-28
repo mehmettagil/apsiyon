@@ -5,6 +5,7 @@ import 'package:apsiyon/view/ad_list/ad_list.dart';
 import 'package:apsiyon/view/advert_screen.dart';
 import 'package:apsiyon/view/filter/widget/ad_filter_Selection.dart';
 import 'package:apsiyon/view/house_ad/house_ad_view.dart';
+import 'package:apsiyon/view/reference/reference_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,6 +20,7 @@ class FilterView extends StatelessWidget {
         title: const Text('Filtreleme'),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.filter_alt),
@@ -32,6 +34,10 @@ class FilterView extends StatelessWidget {
             icon: Icon(Icons.book),
             label: 'Gelen Başvurular',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Referens Ol',
+          ),
         ],
         onTap: (index) {
           if (index == 0) {
@@ -41,6 +47,10 @@ class FilterView extends StatelessWidget {
           } else if (index == 2) {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               return const AdList();
+            }));
+          } else if (index == 3) {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return const ReferenceView();
             }));
           } else {
             Navigator.push(context, MaterialPageRoute(builder: (context) {

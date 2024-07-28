@@ -1,6 +1,7 @@
 import 'package:apsiyon/core/enum/comment_navigation_type.dart';
 import 'package:apsiyon/core/init/extension/context_extensions.dart';
 import 'package:apsiyon/core/model/ad_model.dart';
+import 'package:apsiyon/view/house_ad/house_ad_view.dart';
 import 'package:apsiyon/widget/comment_card.dart';
 import 'package:apsiyon/widget/sub_confirmation_button.dart';
 import 'package:flutter/material.dart';
@@ -121,7 +122,12 @@ class _AdDetailState extends State<AdDetail> {
                 ),
                 Center(
                   child: ConfirmButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AdView()));
+                    },
                   ),
                 )
               ],

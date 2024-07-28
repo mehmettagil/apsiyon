@@ -6,6 +6,7 @@ import 'package:apsiyon/injection.dart';
 import 'package:apsiyon/view/filter/filter_view.dart';
 import 'package:apsiyon/view/house_ad/house_ad_view.dart';
 import 'package:apsiyon/view/login_screen.dart';
+import 'package:apsiyon/view/reference/reference_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
